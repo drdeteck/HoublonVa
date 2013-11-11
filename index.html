@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en" itemscope itemtype="http://schema.org/Article">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+	<meta name="author" content="Philippe Lavoie" />
+	<meta name="description" content="App to find the closest microbrewery from you. By Philippe Lavoie" />
+	<!-- OpenGraph -->
+	<meta property="og:title" content="Houblon va?" />
+	<meta property="og:description" content="App to find the closest microbrewery from you. By Philippe Lavoie" />
+	<meta property="og:image" content="http://houblonva.philippelavoie.com/img/logo.png"/>
+	<meta property="og:url" content="http://houlbonva.philippelavoie.com" />
+
+	<!-- Google+ -->
+	<meta itemprop="name" content="Houlbon va?">
+	<meta itemprop="description" content="App to find the closest microbrewery from you. By Philippe Lavoie">
+
+	<title>Houblon va?</title>
+
+	<!-- Web Font -->
+	<link href='http://fonts.googleapis.com/css?family=Roboto:400,300' rel='stylesheet' type='text/css'>
+	
+	<!-- Styles (CSS) -->
+	<!-- <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" > -->
+	<link rel="stylesheet" type="text/css" href="css/style.css" >
+
+	<!-- Fav Icon -->
+	<link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon" />
+
+    <!-- iOS WebClip icons -->
+    <link rel="apple-touch-icon" href="img/logo57.png" />
+    <link rel="apple-touch-icon" sizes="72x72" href="img/logo72.png" />
+    <link rel="apple-touch-icon" sizes="114x114" href="img/logo114.png" />
+    <link rel="image_src" href="img/logo.png"/>
+
+    <!-- Google Analytics -->
+	<script type="text/javascript">
+	  // (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	  // (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	  // m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	  // })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+	  // ga('create', 'UA-31135800-3', 'philippelavoie.com');
+	  // ga('send', 'pageview');
+	</script>
+
+	<!-- Javascript -->
+	<script type="text/javascript" src="js/jquery-2.0.3.min.js"></script>
+	<script type="text/javascript" src="js/knockout-3.0.0.js"></script>
+	<script type="text/javascript" src="js/underscore-min.js"></script>
+	<script type="text/javascript" src="js/modernizr-2.6.2.js"></script>
+	<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD7OW29RUQBa0S7ozHwehV_b4GYAllAn54&sensor=false"></script>
+
+	<script type="text/javascript" src="js/PlaceViewModel.js"></script>
+	<script type="text/javascript" src="js/HoublonVaViewModel.js"></script>
+	<script type="text/javascript" src="js/script.js"></script>
+</head>
+<body class="center">
+
+	<!-- Menu -->
+	<div id="left-col" class="float-left"> 
+		<div class="header">
+			<img class="logo float-left" src="img/logo114.png"/>
+			<div class="float-left">
+				<h1 class="title float-left">Houblon va?</h1>
+				<a href="https://play.google.com/store/apps/details?id=com.philippelavoie.houblonva">
+					<img class="android-play fclear-left" src="http://developer.android.com/images/brand/en_app_rgb_wo_45.png" title="Application Android disponible sur le Play Store"/>
+				</a>
+			</div>
+		</div>
+		<div id="nav-list" class="nav well sidebar-nav" data-bind="template: {name: 'place-menu-template', foreach: PL.HoublonVa.ViewModel.Places, afterRender: PL.HoublonVa.ViewModel.RenderMenuItem }">
+		</div>
+	</div>
+
+	<!-- Google Maps Canvas-->
+	<div id="map-canvas"></div>
+
+	<div id="footer">
+		<div id="footer-button" class="footer-border">
+			<i class="icon-chevron-up footer-arrow"></i>
+		</div>
+		<div id="footer-content" class="footer-border">
+			<div class="center footer-group" >
+				<div class="float-left footer-column" >
+					<h3>Houblon va?</h3>
+					<ul class="footer-list">
+						<li><a target="_blank" href="http://www.linkedin.com/in/philippelavoie" >By: Philippe Lavoie</a></li>
+						<li><a target="_blank" href="https://github.com/drdeteck/HoublonVa/issues/new" >Bug Report</a></li>
+						<li><a target="_blank" href="http://dram.philippelavoie.com/" >Other project</a></li>
+					</ul>
+				</div>
+				<div class="float-left footer-column" >
+					<h3>Technologies</h3>
+					<ul class="footer-list">
+						<li><a target="_blank" href="http://jquery.com/" >jQuery</a></li>
+						<li><a target="_blank" href="http://fredhq.com/projects/roundabout" >Roundabout</a></li>
+						<li><a target="_blank" href="http://twitter.github.com/bootstrap/" >Bootstrap</a></li>
+						<li><a target="_blank" href="http://glyphicons.com/" >Glyphicons</a></li>
+					</ul>
+				</div>
+				<div class="float-left footer-column" >
+					<h3>More</h3>
+					<ul class="footer-list">
+						<li><i class="icon-question-sign"></i> <a href="#about" role="button" data-toggle="modal" >About</a></li>
+						<li><i class="icon-envelope"></i> <a href="mailto:phil@philippelavoie.com" >Email me</a></li>
+						<li><i class="icon-user"></i> <a href="http://www.philippelavoie.com">PhilippeLavoie.com</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="modal hide display-none" id="about" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" >
+		<div class="modal-header">
+			<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+			<h3 id="myModalLabel">The Dram Project</h3>
+		</div>
+		<div class="modal-body" style="font-size:17px;">
+			<p>
+				My name is Philippe and I'm from Montréal. 
+				I'm a scotch amateur since 2011 and I read <strong><a href="http://www.reddit.com/r/scotch">Scotchit</a></strong> since then.
+				I went in Scotland for 3 weeks. 
+				There, I visited 6 distilleries and began what I call my bootcamp. 
+			</p>
+			<p>
+				When I came back, I had this idea of creating a reference website to hold the common distilleries and their whisky.
+				That was a nice way to discover the latest web technologies like <strong><a href="http://twitter.github.com/bootstrap/">Bootstrap</a></strong>
+				and to create something nice where you can find the official tasting notes of the most common whisky.
+			</p>
+			<p>
+				So, I hope you enjoy the site. You can <strong><a href="https://github.com/drdeteck/DramProject/issues/new">report a bug, send me a suggestion</a></strong> or a 
+				<strong><a href="mailto:phil@philippelavoie.com">contact me</a></strong> for any questions.
+			</p>
+			<p class="signature">Phil</p>
+		</div>
+		<div class="modal-footer">
+			<button class="btn btn-inverse" data-dismiss="modal" aria-hidden="true">Close</button>
+		</div>
+	</div>
+	<div id="mask"></div>
+
+	<!-- Templates -->				
+	<script type="text/html" id="place-menu-template">
+<div class="cards-card" data-bind="css: CategoryCss">
+	<div class="cards-expanded">
+		<div class="cards-entity cards-padding">
+			<div class="cards-entity-left">
+				<div class="cards-show-expanded">
+					<div class="cards-entity-alias-icon-container" style="display: none;">
+						<div class="cards-entity-alias-icon cards-alias-home">
+						</div>
+						<div class="cards-entity-alias-icon cards-alias-work">
+						</div>
+					</div>
+					<div class="">
+						<div class="cards-entity-title cards-strong cards-text-truncate-and-wrap">
+							<a data-bind="text: Name, click: OpenInfoWindowAndCenter"></a>
+						</div>
+						<div class="cards-entity-address cards-strong">
+							<div class="cards-text-truncate-and-wrap">
+								<span>1219 Rue Crescent</span>
+							</div>
+							<div class="cards-text-truncate-and-wrap">
+								<span>Montréal, QC H3G 2B1</span>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="cards-entity-right">
+				<div class="hideable-element">
+					<div class="cards-entity-icons cards-disable-text-selection">
+						<a class="cards-icon-link cards-directions-icon" href="javascript:void(0)">
+							<span class="cards-text-truncate-and-wrap">Directions</span>
+						</a>
+						<span class="vertical-divider"></span>
+						<a class="cards-icon-link cards-entity-star-icon" href="javascript:void(0)">
+							<span class="cards-text-truncate-and-wrap">Save</span>
+						</a>
+					</div>
+					<hr class="cards-entity-horizontal-line horizontal-line">
+					<div class="cards-entity-url">
+						<a class="cards-text-truncate" target="_blank" data-bind="attr: {href: Website}, text: Website">brutopia.net</a>
+					</div>
+				</div>
+				<div class="cards-entity-phone">
+					<span data-bind="text: FormattedPhoneNumber"></span>
+				</div>
+			</div>
+			<div class="cards-entity-background">
+			</div>
+		</div>
+	</div>
+</div>
+	</script>
+	<script type="text/html" id="bottle-template">
+	</script>
+	<script type="text/html" id="mobile-bottle-template">
+	</script>
+</body>
+</html>
