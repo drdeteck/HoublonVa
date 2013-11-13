@@ -17,6 +17,12 @@ function HoublonVaViewModel(dataLoadedCallback) {
 	var indexTypes = 12;
 	var indexIcon = 13;
 	var indexCategory = 14;
+	var indexStreetNumber = 15;
+	var indexRoute = 16;
+	var indexLocality = 17;
+	var indexProvince = 18;
+	var indexCountry = 19;
+	var indexPostalCode = 20;
 	
 	var firstPage = true;
 	var pageBottomPadding = "";
@@ -67,7 +73,13 @@ function HoublonVaViewModel(dataLoadedCallback) {
 			row[indexId].v,
 			row[indexTypes].v,
 			row[indexIcon].v,
-			row[indexCategory].v
+			row[indexCategory].v,
+			row[indexStreetNumber].v,
+			row[indexRoute].v,
+			row[indexLocality].v,
+			row[indexProvince].v,
+			row[indexCountry].v,
+			row[indexPostalCode].v
 		);
 	};
 	

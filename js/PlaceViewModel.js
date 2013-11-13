@@ -1,5 +1,5 @@
 // Class to holds a Bottle attributes
-function PlaceViewModel(name, website, rating, reference, longitute, latitude, international_phone_number, vicinity, formatted_phone_number, url, formatted_address, id, types, icon, category) {
+function PlaceViewModel(name, website, rating, reference, longitute, latitude, international_phone_number, vicinity, formatted_phone_number, url, formatted_address, id, types, icon, category, street_number, route, locality, province, country, postal_code) {
 	var self = this;
 	
 	self.Name = ko.observable(name);
@@ -17,15 +17,49 @@ function PlaceViewModel(name, website, rating, reference, longitute, latitude, i
 	self.Types = ko.observable(types);
 	self.Icon = ko.observable(icon);
 	self.Category = ko.observable(category);
+	self.StreetNumber = ko.observable(street_number);
+	self.Route = ko.observable(route);
+	self.Locality = ko.observable(locality);
+	self.Province = ko.observable(province);
+	self.Country = ko.observable(country);
+	self.PostalCode = ko.observable(postal_code);
 
 	self.Distance = ko.computed(function() {
-        return PL.Utilities.Haversine(self.Longitude(), self.Latitude(), PL.GoogleMaps.Longitude(), PL.GoogleMaps.Latitude());
+        return PL.Utilities.Haversine(PL.GoogleMaps.Latitude(), PL.GoogleMaps.Longitude(), self.Latitude(), self.Longitude());
     }, this);
+
+	self.Bearing = ko.computed(function() {
+		var bearing = PL.Utilities.Bearing(PL.GoogleMaps.Latitude(), PL.GoogleMaps.Longitude(), self.Latitude(), self.Longitude());
+		// Ajust for the 45 deg compass icon and return css rotate
+		return "rotate(" + (Math.round(bearing) - 45) + "deg)";
+	});
+
+	self.BearingStyle = ko.computed(function() {
+		var transform = [];
+		transform.push("transform:" + self.Bearing() + ";");
+		transform.push("-webkit-transform:" + self.Bearing() + ";");
+		transform.push("-moz-transform:" + self.Bearing() + ";");
+		transform.push("-ms-transform:" + self.Bearing() + ";");
+		transform.push("-o-transform:" + self.Bearing() + ";");
+		return transform.join("");
+	});
 
 	self.CategoryCss = ko.computed(function() {
 		if (self.Category() == 1) return "cat-micro";
 		else if (self.Category() == 2) return "cat-pub";
 		else if (self.Category() == 3) return "cat-market";
+	});
+
+	self.AddressStreet = ko.computed(function() {
+		return self.StreetNumber() + " " + self.Route();
+	});
+
+	self.AddressCity = ko.computed(function() {
+		var addressCity = self.Locality() + ", " + self.Province() + " " + self.PostalCode();
+		if (addressCity && addressCity.indexOf(",") === 0) {
+			addressCity = addressCity.replace("," , "");
+		}
+		return addressCity;
 	});
 
     self.Marker = PL.GoogleMaps.AddMarker(longitute, latitude, name);

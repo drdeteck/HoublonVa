@@ -147,6 +147,10 @@ Number.prototype.toRad = function() {
    return this * Math.PI / 180;
 }
 
+Number.prototype.toDeg = function() {
+   return this * 180 / Math.PI;
+}
+
 // Public Method
 Utilities.Idfy = function (name)
 {
@@ -160,7 +164,7 @@ Utilities.FormatMoney = function(number){
 	}
  };
 
-Utilities.Haversine = function(lon1, lat1, lon2, lat2){
+Utilities.Haversine = function(lat1, lon1, lat2, lon2){
 
 	// convert decimal degrees to radians 
 	var R = 6371; // km 
@@ -173,6 +177,15 @@ Utilities.Haversine = function(lon1, lat1, lon2, lat2){
 	var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a)); 
 	return (R * c); 
 };
+
+Utilities.Bearing = function (lat1, lon1, lat2, lon2) {
+  lat1 = lat1.toRad(); lat2 = lat2.toRad();
+  var dLon = (lon2-lon1).toRad();
+  var y = Math.sin(dLon) * Math.cos(lat2);
+  var x = Math.cos(lat1)*Math.sin(lat2) -
+          Math.sin(lat1)*Math.cos(lat2)*Math.cos(dLon);
+  return Math.atan2(y, x).toDeg();
+}
 
 Utilities.GetLocation = function() {
   if (Modernizr.geolocation) {
