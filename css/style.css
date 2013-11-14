@@ -65,6 +65,18 @@ a:hover {
 	cursor: pointer;
 }
 
+.url,
+.url:link,
+.url:active,
+.url:visited {
+	text-decoration: none;
+	color: #666;
+}
+
+.url:hover {
+	text-decoration: underline;
+}
+
 /***
 ***  Structure
 ***/
@@ -117,6 +129,7 @@ a:hover {
 	width: 403px;
 	z-index: 0;
 	margin: 15px;
+	min-height: 110px;
 }
 
 .cat-micro {
@@ -199,26 +212,17 @@ a:hover {
 }
 
 .horizontal-line.cards-entity-horizontal-line {
-margin: 10px 15px 2px;
+	/*margin: 10px 15px 2px;*/
+	width: 100%;
 }
 .horizontal-line {
-background: #e6e6e6;
-border: none;
-height: 1px;
-margin: 8px 0;
-}
-user agent stylesheethr {
-display: block;
--webkit-margin-before: 0.5em;
--webkit-margin-after: 0.5em;
--webkit-margin-start: auto;
--webkit-margin-end: auto;
-border-style: inset;
-border-width: 1px;
+	background: #e6e6e6;
+	border: none;
+	height: 1px;
 }
 
 .cards-entity-url {
-padding: 6px 15px 2px;
+	padding: 2px 0px;
 }
 
 /***
@@ -361,6 +365,11 @@ padding: 6px 15px 2px;
 }
 
 .compass {
+	padding-top: 8px;
+	padding-left: 3px;
+}
+
+.compass-icon {
 	float: left;
     font-size: 21px;
 }

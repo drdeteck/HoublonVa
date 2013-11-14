@@ -62,6 +62,12 @@ function PlaceViewModel(name, website, rating, reference, longitute, latitude, i
 		return addressCity;
 	});
 
+	self.WebsiteClean = ko.computed(function(){
+		var clean = self.Website().replace("http://", "").replace("www.", "");
+		if (clean[clean.length-1] === "/") clean = clean.substr(0, clean.length-1);
+		return clean;
+	});
+
 	if (category === 1) self.Marker = PL.GoogleMaps.AddYellowMarker(longitute, latitude, name);
 	else if (category === 2) self.Marker = PL.GoogleMaps.AddRedMarker(longitute, latitude, name);
 	else if (category === 3) self.Marker = PL.GoogleMaps.AddGreenMarker(longitute, latitude, name);

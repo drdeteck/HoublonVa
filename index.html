@@ -167,22 +167,20 @@
 				</div>
 			</div>
 			<div class="cards-entity-right">
-				<div class="hideable-element">
-					<div class="cards-entity-icons cards-disable-text-selection">
-						<span class="vertical-divider"></span>
-						<div class="typicons-compass compass" data-bind="attr: { style: BearingStyle }"></div>
-						<span data-bind="text: Math.ceil(Distance()) + ' km'"></span>
-					</div>
-					<hr class="cards-entity-horizontal-line horizontal-line">
-					<div class="cards-entity-url">
-						<a class="cards-text-truncate" target="_blank" data-bind="attr: {href: Website}, text: Website">brutopia.net</a>
-					</div>
+				<div class="float-left compass">
+					<div class="typicons-compass compass-icon" data-bind="attr: { style: BearingStyle }"></div>
+					<span data-bind="text: Math.ceil(Distance()) + ' km'"></span>
 				</div>
-				<div class="cards-entity-phone">
-					<span data-bind="text: FormattedPhoneNumber"></span>
+				<div class="float-right">
+					<a target="_blank" data-bind="attr: {href: Url}"><img src="img/gmap-bw32.png" /></a>
 				</div>
-			</div>
-			<div class="cards-entity-background">
+				<hr class="fclear-left cards-entity-horizontal-line horizontal-line">
+				<div class="fclear-left cards-entity-url">
+					<a target="_blank" class="url" target="_blank" data-bind="attr: {href: Website}, text: WebsiteClean">brutopia.net</a>
+				</div>
+				<div class="fclear-left cards-entity-url">
+					<a target="_blank" class="url" data-bind="text: FormattedPhoneNumber, attr: {href: 'tel:' + InternationalPhoneNumber().replace(' ', '-')}"></a>
+				</div>
 			</div>
 		</div>
 	</div>
