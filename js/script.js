@@ -285,12 +285,24 @@ GoogleMaps.Resize = function () {
 	GoogleMaps.Map.setZoom(8);
 }
 
-GoogleMaps.AddMarker = function(longitude, latitude, title) {
+GoogleMaps.AddYellowMarker = function(longitude, latitude, title) {
+	return GoogleMaps.AddMarker(longitude, latitude, title,  "img/logo32.png");
+}
+
+GoogleMaps.AddRedMarker = function(longitude, latitude, title) {
+	return GoogleMaps.AddMarker(longitude, latitude, title,  "img/logo-red32.png");
+}
+
+GoogleMaps.AddGreenMarker = function(longitude, latitude, title) {
+	return GoogleMaps.AddMarker(longitude, latitude, title,  "img/logo-green32.png");
+}
+
+GoogleMaps.AddMarker = function(longitude, latitude, title, icon) {
 	return new google.maps.Marker({
 	    position: new google.maps.LatLng(latitude, longitude),
 	    map: GoogleMaps.Map,
 	    title: title,
-	    icon: "img/logo32.png"
+	    icon: icon
 	});
 };
 

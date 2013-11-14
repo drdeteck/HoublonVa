@@ -62,7 +62,10 @@ function PlaceViewModel(name, website, rating, reference, longitute, latitude, i
 		return addressCity;
 	});
 
-    self.Marker = PL.GoogleMaps.AddMarker(longitute, latitude, name);
+	if (category === 1) self.Marker = PL.GoogleMaps.AddYellowMarker(longitute, latitude, name);
+	else if (category === 2) self.Marker = PL.GoogleMaps.AddRedMarker(longitute, latitude, name);
+	else if (category === 3) self.Marker = PL.GoogleMaps.AddGreenMarker(longitute, latitude, name);
+    
 
     self.InfoWindow = new google.maps.InfoWindow({
       content: "<div>" + self.Name() + "</div>"
