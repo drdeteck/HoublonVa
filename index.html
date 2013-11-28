@@ -59,16 +59,17 @@
 <body class="center">
 
 	<!-- Menu -->
-	<div id="left-col" class="float-left"> 
-		<div class="header">
-			<img class="logo float-left" src="img/logo114.png"/>
-			<div class="float-left">
-				<h1 class="title float-left">Houblon va?</h1>
-				<a href="https://play.google.com/store/apps/details?id=com.philippelavoie.houblonva">
-					<img class="android-play fclear-left" src="http://developer.android.com/images/brand/en_app_rgb_wo_45.png" title="Application Android disponible sur le Play Store"/>
-				</a>
-			</div>
+	<div class="header">
+		<img class="logo float-left" src="img/logo114.png"/>
+		<div class="float-left">
+			<h1 class="title float-left">Houblon va?</h1>
+			<!-- <a href="https://play.google.com/store/apps/details?id=com.philippelavoie.houblonva">
+				<img class="android-play fclear-left" src="http://developer.android.com/images/brand/en_app_rgb_wo_45.png" title="Application Android disponible sur le Play Store"/>
+			</a> -->
 		</div>
+	</div>
+	<div id="left-col" class="float-left"> 
+
 		<div id="nav-list" class="nav well sidebar-nav" data-bind="template: {name: 'place-menu-template', foreach: PL.HoublonVa.ViewModel.Places, afterRender: PL.HoublonVa.ViewModel.RenderMenuItem }">
 		</div>
 	</div>
@@ -142,10 +143,10 @@
 
 	<!-- Templates -->				
 	<script type="text/html" id="place-menu-template">
-<div class="cards-card" data-bind="css: CategoryCss">
-	<div class="cards-expanded">
-		<div class="cards-entity cards-padding">
-			<div class="cards-entity-left">
+<div class="cards-card full-width">
+	<div class="cards-expanded full-width" data-bind="css: CategoryCss">
+		<div class="cards-entity full-width cards-padding">
+			<div class="cards-entity-left border-box ">
 				<div class="cards-show-expanded">
 					<div class="cards-entity-alias-icon-container" style="display: none;">
 						<div class="cards-entity-alias-icon cards-alias-home">

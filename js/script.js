@@ -28,7 +28,7 @@ HoublonVa.Setup = function () {
 		var callbacks = [PL.HoublonVa.HideLoadingMask];
 		
 		callbacks.unshift(PL.GoogleMaps.Resize);
-		callbacks.unshift(PL.HoublonVa.RefreshMenuHeight);
+		// callbacks.unshift(PL.HoublonVa.RefreshMenuHeight);
 
 		HoublonVa.ViewModel = new HoublonVaViewModel(callbacks);
 		ko.applyBindings(HoublonVa.ViewModel);
@@ -40,9 +40,9 @@ HoublonVa.Setup = function () {
 		PL.SpreadSheet.GetData("select%20*%20order%20by%20A%2C%20B%2C%20C", HoublonVa.ViewModel.MapperCallback);
 	});
 
-	$(window).resize(function() {
-		PL.HoublonVa.RefreshMenuHeight();
-	});
+	// $(window).resize(function() {
+	// 	PL.HoublonVa.RefreshMenuHeight();
+	// });
 };
 
 HoublonVa.IsTablet = function() {
@@ -54,10 +54,10 @@ HoublonVa.IsFullSize = function() {
 };
 
 // Resize the left menu size
-HoublonVa.RefreshMenuHeight = function() {
-	var menuPadding = $("#nav-list").outerHeight(true) - $("#nav-list").height();
-	$("#nav-list").height($(window).height() - (menuPadding + $("#nav-list").offset().top));
-};
+// HoublonVa.RefreshMenuHeight = function() {
+// 	var menuPadding = $("#nav-list").outerHeight(true) - $("#nav-list").height();
+// 	$("#nav-list").height($(window).height() - (menuPadding + $("#nav-list").offset().top));
+// };
 
 HoublonVa.RunFooterAnimation = function(doOpen) {
 	var footerOpenHeight = 250,

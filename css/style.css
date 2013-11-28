@@ -60,6 +60,21 @@ ul
 	margin: auto;
 }
 
+.full-width
+{
+	width: 100%;
+	box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+}
+
+.border-box 
+{
+	box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+}
+
 a:hover {
 	text-decoration: underline;
 	cursor: pointer;
@@ -83,10 +98,12 @@ a:hover {
 
 .header {
 	float: left;
+	position: absolute;
 }
 
 .logo {
 	margin-top: 10px;
+	margin-bottom: 10px;
 	margin-left: 20px;
 }
 
@@ -98,11 +115,19 @@ a:hover {
 	margin-left: 20px;
 }
 
+#left-col {
+	height: 100%;
+	padding-top: 125px;
+	box-sizing: border-box;
+	width: 33%;
+}
+
 #nav-list {
 	overflow-y: scroll;
 	float: left;
 	clear: left;
-	width: 447px;
+	/*width: 447px;*/
+	height: 100%;
 }
 
 #nav-list ul {
@@ -116,20 +141,20 @@ a:hover {
 
 .cards-card {
 	color: #666;
-	background: #fff;
-	border-radius: 2px;
-	box-shadow: 0 2px 6px rgba(0,0,0,0.3),0 -3px 8px rgba(0,0,0,0.2);
-	box-sizing: border-box;
-	-moz-box-sizing: border-box;
-	-webkit-box-sizing: border-box;
 	font-size: 12px;
 	line-height: 16px;
 	outline: none;
 	overflow: hidden;
-	width: 403px;
 	z-index: 0;
-	margin: 15px;
 	min-height: 110px;
+	padding: 0 15px 15px;
+}
+
+.cards-expanded {
+	background: #fff;
+	border-radius: 2px;
+	box-shadow: 0 2px 6px rgba(0,0,0,0.3),0 -3px 8px rgba(0,0,0,0.2);
+	display: inline-block;
 }
 
 .cat-micro {
@@ -146,17 +171,19 @@ a:hover {
 
 .cards-entity {
 	padding-right: 0px;
+	display: inline-block;
 }
 .cards-padding {
 	padding: 13px;
 }
 
 .cards-entity-left {
+	float: left;
 	display: inline-block;
 	padding-right: 13px;
 	position: relative;
 	vertical-align: top;
-	width: 219px;
+	width: 66%;
 	z-index: 1;
 }
 
@@ -164,7 +191,7 @@ a:hover {
 	float: right;
 	display: inline-block;
 	vertical-align: top;
-	width: 139px;
+	width: 34%;
 }
 
 .cards-entity-background {
@@ -403,5 +430,8 @@ a:hover {
 }
 
 @media screen and (max-width: 600px) {
-
+#left-col
+{
+	width: 100%
+}
 }
