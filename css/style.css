@@ -2,7 +2,7 @@
 
 /* typicons */
 [class*="typicons-"]:before {
-  font-family: 'Typicons', sans-serif;
+	font-family: 'Typicons', sans-serif;
 }
 
 body
@@ -99,6 +99,7 @@ a:hover {
 .header {
 	float: left;
 	position: absolute;
+	width: 33%;
 }
 
 .logo {
@@ -133,6 +134,34 @@ a:hover {
 #nav-list ul {
 	padding: 0px;
 	margin: 0px;
+}
+
+/***
+***  Cards Filter
+***/
+
+.filters-container {
+	float: left;
+	width: 100%;
+	min-height: 30px;
+	padding-right: 30px;
+	padding-left: 15px;
+	box-sizing: border-box;
+}
+
+.filters {
+	float: left;
+	width: 100%;
+}
+
+.filter {
+	float: left;
+	padding: 5px;
+	border-radius: 2px;
+	box-shadow: 0 3px 3px 0 rgba(0,0,0,0.15);
+	width: 33%;
+	box-sizing: border-box;
+	background-color: #fff;
 }
 
 /***
@@ -399,7 +428,7 @@ a:hover {
 
 .compass-icon {
 	float: left;
-    font-size: 21px;
+	font-size: 21px;
 }
 
 .compass-0 {
@@ -431,8 +460,17 @@ a:hover {
 }
 
 @media screen and (max-width: 600px) {
-#left-col
-{
-	width: 100%
-}
+	#left-col
+	{
+		width: 100%;
+	}
+
+	.header {
+		width: 100%;
+	}
+
+	.cards-expanded {
+		border-radius: 0;
+		box-shadow: none;
+	}
 }
