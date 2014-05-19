@@ -499,6 +499,7 @@ h1 {
 @media screen and (max-width: 600px) {
     #left-col
     {
+        padding-top: 115px;
         width: 100%;
     }
 
