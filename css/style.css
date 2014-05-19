@@ -109,14 +109,20 @@ a:hover {
     width: 33%;
 }
 
-.logo {
+.title {
     margin-top: 10px;
     margin-bottom: 10px;
-    margin-left: 20px;
+    margin-left: 15px;
 }
 
-.title {
+.logo {
+    max-height: 70px;
+}
+
+h1 {
+    margin: 0px;
     margin-left: 20px; 
+    margin-top: 10px; 
 }
 
 #left-col {
@@ -498,6 +504,18 @@ a:hover {
 
     .header {
         width: 100%;
+    }
+
+    .logo {
+        max-height: 50px;
+    }
+
+    h1 {
+        margin-top: 0px;
+    }
+    
+    .filters-container {
+        padding-right: 15px;
     }
 
     .cards-expanded {
