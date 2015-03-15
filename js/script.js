@@ -45,7 +45,7 @@ window.PL = window.PL || {};
 
                               // Setup Data
                               PL.SpreadSheet.Key = "1YdUcAaCX9nHtacxOu-BrIaHteR-th0FHCNkBRdh_ZZU";
-                              PL.SpreadSheet.GetData("select+*+order+by+A,+B,+C", HoublonVa.ViewModel.MapperCallback);
+                              PL.SpreadSheet.GetData("select+*+order+by+A,+B,+C&sheet=data", HoublonVa.ViewModel.MapperCallback);
                           });
 
         // $(window).resize(function() {
@@ -256,7 +256,7 @@ window.PL = window.PL || {};
         var url = vizPreKeyUrl + SpreadSheet.Key + vizPostKeyUrl + args;
 
         // Hack the JSONP call
-        window.google = {};
+        window.google = window.google || {};
         google.visualization = {};
         google.visualization.Query = {};
         google.visualization.Query.setResponse = function (data){

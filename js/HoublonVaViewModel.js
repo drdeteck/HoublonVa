@@ -59,29 +59,34 @@ function HoublonVaViewModel(dataLoadedCallback) {
     self.PlaceMapper = function(place, index) {
         var row = place.c;
         return new PlaceViewModel(
-            row[indexName].v,
-            row[indexWebsite].v,
-            row[indexRating].v,
-            row[indexReference].v,
-            row[indexLongitude].v,
-            row[indexLatitude].v,
-            row[indexInternationalPhoneNumber] ? row[indexInternationalPhoneNumber].v : "",
-            row[indexVicinity] ? row[indexVicinity].v : "",
-            row[indexFormattedPhoneNumber] ? row[indexFormattedPhoneNumber].v : "",
-            row[indexUrl].v,
-            row[indexFormattedAddress] ? row[indexFormattedAddress].v : "",
-            row[indexId].v,
-            row[indexTypes].v,
-            row[indexIcon].v,
-            row[indexCategory].v,
-            row[indexStreetNumber].v,
-            row[indexRoute].v,
-            row[indexLocality].v,
-            row[indexProvince].v,
-            row[indexCountry].v,
-            row[indexPostalCode].v
+            self.TryGet(row[indexName]),
+            self.TryGet(row[indexWebsite]),
+            self.TryGet(row[indexRating]),
+            self.TryGet(row[indexReference]),
+            self.TryGet(row[indexLongitude]),
+            self.TryGet(row[indexLatitude]),
+            self.TryGet(row[indexInternationalPhoneNumber]),
+            self.TryGet(row[indexVicinity]),
+            self.TryGet(row[indexFormattedPhoneNumber]),
+            self.TryGet(row[indexUrl]),
+            self.TryGet(row[indexFormattedAddress]),
+            self.TryGet(row[indexId]),
+            self.TryGet(row[indexTypes]),
+            self.TryGet(row[indexIcon]),
+            self.TryGet(row[indexCategory]),
+            self.TryGet(row[indexStreetNumber]),
+            self.TryGet(row[indexRoute]),
+            self.TryGet(row[indexLocality]),
+            self.TryGet(row[indexProvince]),
+            self.TryGet(row[indexCountry]),
+            self.TryGet(row[indexPostalCode])
         );
     };
+
+    self.TryGet = function(cell) {
+        if (cell) return cell.v;
+        return "";
+    }
 
     self.SortPlaces = function() {
         // Sort by distance

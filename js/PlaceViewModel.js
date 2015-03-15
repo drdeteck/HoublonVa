@@ -1,7 +1,7 @@
 // Class to holds a Bottle attributes
 function PlaceViewModel(name, website, rating, reference, longitute, latitude, international_phone_number, vicinity, formatted_phone_number, url, formatted_address, id, types, icon, category, street_number, route, locality, province, country, postal_code) {
     var self = this;
-
+    
     self.Name = ko.observable(name);
     self.Website = ko.observable(website);
     self.Rating = ko.observable(rating);
