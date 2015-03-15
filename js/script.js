@@ -44,8 +44,8 @@ window.PL = window.PL || {};
                               PL.GoogleMaps.Initialize();
 
                               // Setup Data
-                              PL.SpreadSheet.Key = "0AoKnDojyuN8YdEpjVHpZYzZkYW1FdmhzbTZJYjlITGc&sheet=data";
-                              PL.SpreadSheet.GetData("select%20*%20order%20by%20A%2C%20B%2C%20C", HoublonVa.ViewModel.MapperCallback);
+                              PL.SpreadSheet.Key = "1YdUcAaCX9nHtacxOu-BrIaHteR-th0FHCNkBRdh_ZZU";
+                              PL.SpreadSheet.GetData("select+*+order+by+A,+B,+C", HoublonVa.ViewModel.MapperCallback);
                           });
 
         // $(window).resize(function() {
@@ -235,8 +235,10 @@ window.PL = window.PL || {};
     SpreadSheet.Data = {};
 
     // Private Properties
-    var vizPreKeyUrl = "https://spreadsheets.google.com/tq?key=";
-    var vizArgsKey = "&tq=";
+    var vizPreKeyUrl = "https://docs.google.com/spreadsheets/d/";
+    var vizPostKeyUrl = "/gviz/tq?";
+    var vizArgsKey = "tq=";
+
 
     // Public Methods
     SpreadSheet.GetData = function (args, callback)
@@ -250,28 +252,23 @@ window.PL = window.PL || {};
         {
             args = vizArgsKey + args;
         }
+        
+        var url = vizPreKeyUrl + SpreadSheet.Key + vizPostKeyUrl + args;
 
-        var url = vizPreKeyUrl + SpreadSheet.Key + args;
+        // Hack the JSONP call
+        window.google = {};
+        google.visualization = {};
+        google.visualization.Query = {};
+        google.visualization.Query.setResponse = function (data){
+            callback(data);
+        };
 
-        $.get(url, callback, "text");
+        $.get(url, callback, "jsonp");
     };
 
     SpreadSheet.CleanVizResponse = function(data)
     {
-        try
-        {
-            var startIndex = data.indexOf("{");
-            return $.parseJSON(data.substr(startIndex, (data.length - startIndex - 2))).table.rows;
-        }
-        catch(e)
-        {
-            // We report an error, and show the erronous JSON string (we replace all " by ', to prevent another error)
-            document.data = data;
-            console.log(data);
-            console.log(e);
-        }
-
-        return "";
+        return data.table.rows;
     }
 
 } (PL.SpreadSheet = PL.SpreadSheet || {}, $));
